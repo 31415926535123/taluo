@@ -14,41 +14,36 @@
             padding: 0;
             text-align: center;
         }
-        
-        h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #F9C80E;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        #single-spread{
+            display: none;
         }
-        
-        p {
-            margin-bottom: 2rem;
-            color: rgba(251, 250, 248, 0.8);
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.6;
-        }
-        
-        button { z-index: 1;
-            background: rgba(249, 200, 14, 0.9);
-            color: #2E0249;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        button:hover {
-            background: #F9C80E;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-        }
+button {height: 50px;
+    width: 80px;
+    z-index: 1;
+background: #6a1572;
+  color: #E6E6FA;
+  border: none;
+  border-radius: 8px;
+  padding: 0 0;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+}
+button img {
+    height: 100%; /* 设置图片高度为按钮高度 */
+    width: 100%; /* 设置图片宽度为按钮宽度 */
+    object-fit: fill;
+}
+button:hover {
+  color: #E6E6FA;
+  box-shadow: 0 0 8px #E6E6FA;
+}
+
+button:active {
+  transform: translateY(2px);
+}
         
         /* 牌阵选择区域 */
         .spread-selector {

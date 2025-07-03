@@ -1,19 +1,14 @@
-function  showStartCard() {
-        const cardFront = document.getElementById('card-front');
-        const cardBack = document.getElementById('card-back');
-        if (cardFront) cardFront.classList.remove('hidden');
-        if (cardBack) cardBack.classList.remove('hidden');
-    }
+
 // 牌阵定义
         const spreads = {
             single: {
                 name: "单张牌占卜",
                 positions: ["你的现状"]
-            },
+            }/*,
             three: {
                 name: "三张牌占卜",
                 positions: ["过去", "现在", "未来"]
-            }
+            }*/
         };
         
         // 游戏类
@@ -198,5 +193,6 @@ function  showStartCard() {
         // 初始化游戏
         document.addEventListener('DOMContentLoaded', () => {
             const game = new TarotGame();
+            game.showNewButtons();
         });
 

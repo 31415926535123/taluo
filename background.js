@@ -56,13 +56,13 @@ window.addEventListener('document.documentElement.clientWidth<window.innerWidth'
 
 });
 function drawing(){
-for(i=0;i<100;i++){var x=Math.random()*window.innerWidth*0.33;
+for(i=0;i<300;i++){var x=Math.random()*window.innerWidth*0.33;
 var y=Math.random()*window.innerHeight;
 // 调用函数绘制星星，可随意设置位置
-drawStar(x, y, 2, 5, 4, 'white', 'white');}
-for(i=0;i<100;i++){var x=window.innerWidth-Math.random()*window.innerWidth*0.33;
+drawStar(x, y, 0.1, 2.5, 4, 'white', 'white');}
+for(i=0;i<300;i++){var x=window.innerWidth-Math.random()*window.innerWidth*0.33;
 var y=Math.random()*window.innerHeight;
 // 调用函数绘制星星，可随意设置位置
-drawStar(x, y, 2, 5, 4, 'white', 'white');}
-drawStar(0.5*window.innerWidth, 0.3*window.innerHeight, 30, 75, 5, 'yellow', 'white');}
+drawStar(x, y, 0.1, 2.5, 4, 'white', 'white');}
+drawStar(0.5*window.innerWidth, 0.2*window.innerHeight, 30, 75, 5, 'yellow', 'white');}
 drawing();
