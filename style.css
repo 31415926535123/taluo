@@ -1,0 +1,256 @@
+ /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0A122A 0%, #2E0249 100%);
+            height: 100vh;
+            width: 100vw;
+            color: #FBFAF8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #F9C80E;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        p {
+            margin-bottom: 2rem;
+            color: rgba(251, 250, 248, 0.8);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        button { z-index: 1;
+            background: rgba(249, 200, 14, 0.9);
+            color: #2E0249;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background: #F9C80E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 牌阵选择区域 */
+        .spread-selector {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* 牌组区域 */
+        .deck-area {
+            margin: 3rem 0;
+             max-height: 30%;
+        }
+        
+        .deck {
+            width: 120px;
+            height: 180px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+        
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+        
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+        #three-spread{display: none;}
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .card-front {
+            transform: rotateY(180deg);
+            background-color: #FBFAF8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .card-back {
+            background: linear-gradient(135deg, #2E0249 0%, #57048a 50%, #2E0249 100%);
+            border: 2px solid #F9C80E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+                /* 设置背景图片，将 'path/to/your-image.jpg' 替换为实际图片路径 */
+    background-image: url('./image/taluo.jpg');
+    /* 让背景图片覆盖整个元素 */
+    background-size: cover;
+    /* 背景图片居中显示 */
+    background-position: center;
+    /* 取消原有渐变背景 */
+    background-color: transparent; 
+    border: 2px solid #F9C80E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        }
+        
+
+        
+        .card-image {
+            max-width: 80%;
+            max-height: 60%;
+            margin-bottom: 0.5rem;
+            object-fit: contain;
+        }
+        
+        .card-name {
+            font-size: 1.2rem;
+            color: #2E0249;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+        }
+        
+        .card-position {
+            font-size: 0.9rem;
+            color: #57048a;
+            font-style: italic;
+        }
+        
+        /* 占卜结果区域 */
+        .reading-area {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        /* 解释模态框 */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #FBFAF8 0%, #e8e4db 100%);
+            color: #2E0249;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal h2 {
+            font-size: 1.8rem;
+            color: #2E0249;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #F9C80E;
+            padding-bottom: 0.5rem;
+        }
+        
+        .modal h3 {
+            font-size: 1.3rem;
+            color: #57048a;
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .modal p {
+            color: #2E0249;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        .close-modal {
+            background: #2E0249;
+            color: #F9C80E;
+            padding: 0.5rem 1rem;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background: #57048a;
+        }
+        
+        /* 响应式布局 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .deck {
+                width: 100px;
+                height: 150px;
+            }
+            
+            .reading-area {
+                gap: 1rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+         .hidden {
+            display: none;
+        }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神秘塔罗占卜</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 页头区域 -->
+        <header>
+            
+            <!-- 牌阵选择 -->
+            <div class="spread-selector">
+                <button id="single-spread">单张牌占卜</button>
+                <button id="three-spread">三张牌占卜</button>
+                <div id="new-buttons" class="hidden">
+                    <button id="fortune">财运</button>
+                    <button id="love">爱情</button>
+                    <button id="friendship">友情</button>
+                    <button id="family">亲情</button>
+                    <button id="difficulty">困难</button>
+                </div>
+            </div>
+        </header>
+        <div style="height: 20vh; width: 30%;">
+        </div>
+    </div>
+        <!-- 牌组区域 -->
+        <div class="deck-area">
+            <div id="deck" class="deck">
+                <div class="card" id="main-card">
+                    <div class="card-face card-front"></div>
+                    <div class="card-face card-back" id="carba"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 占卜结果区域 -->
+        <div id="reading-area" class="reading-area"></div>
+        
+        <!-- 解释模态框 -->
+        <div id="interpretation-modal" class="modal">
+            <div class="modal-content">
+                <h2 id="modal-title">牌面解释</h2>
+                <div id="modal-content">
+                    <div id="card-details"></div>
+                    <div id="interpretation"></div>
+                </div>
+                <button id="close-modal" class="close-modal">关闭</button>
+            </div>
+        </div>
+    </div>
+<script src="background.js"></script>
+<script src="taluodata.js"></script>  
+<script src="mainjs.js"> </script>
+</body>
+</html>
