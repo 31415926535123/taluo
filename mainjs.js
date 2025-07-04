@@ -54,12 +54,17 @@
                 
                 // 清空结果区域
                 document.getElementById('reading-area').innerHTML = '';
-                // 显示洗牌动画
                         
-        const cardBack = document.getElementById('carba');
-        cardBack.classList.add('hidden');
-        const car= document.getElementById('main-card');
-        car.classList.add('hidden');
+const cardBackObjects = {}; // 用于存储获取到的元素
+            const car = document.getElementsByClassName('card');
+            for (let i = 0; i < car.length; i++) {
+                const elementId = `carba${i}`; // 动态生成元素 ID
+                const cardBack = document.getElementById(elementId);
+                cardBackObjects[`cardBack${i}`] = cardBack; // 将元素添加到对象*/
+
+                car[i].classList.add('hidden');
+            }
+
         const carra= document.getElementById('deck');
         carra.classList.add('hidden');
        
@@ -124,7 +129,7 @@
                 
                 // 牌面内容
                 const cardImage = document.createElement('img');
-                cardImage.src = card.image;
+                cardImage.src = './image/'+card.id+'.webp';
                 cardImage.alt = `${card.name}塔罗牌`;
                 cardImage.className = 'card-image';
                 

@@ -17,6 +17,10 @@
         #single-spread{
             display: none;
         }
+        .hidden{
+            display: none;
+        }
+        #little_star{height: 20vh; width: 100vw;}
 button {height: 50px;
     width: 80px;
     z-index: 1;
@@ -109,8 +113,7 @@ button:active {
         
         .card-back {
             background: linear-gradient(135deg, #2E0249 0%, #57048a 50%, #2E0249 100%);
-                /* 设置背景图片，将 'path/to/your-image.jpg' 替换为实际图片路径 */
-    background-image: url('./image/taluo_new.jpg');
+    background-image: url('./image/taluo_new.webp');
     /* 让背景图片覆盖整个元素 */
     background-size: cover;
     /* 背景图片居中显示 */
@@ -265,5 +268,5 @@ button:active {
          .hidden {width: auto;
         flex: 1; /* 让按钮平均分配剩余空间 */
         min-width: 0; /* 允许按钮宽度缩小 */
-            display: none;
+            display: none;   
         }

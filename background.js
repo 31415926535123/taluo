@@ -71,6 +71,6 @@ var y=Math.random()*window.innerHeight;
 drawStar(x, y, 0.1, 2.5, 4, 'white', 'white');}
     const centerX = rect.left + 0.5 * rect.width;
     const centerY = rect.top + 0.5 * rect.height;
-    drawStar(centerX, centerY, 15, rect.height/2, 5, 'yellow', 'white');
+    drawStar(centerX, centerY, rect.height/6, rect.height/2, 5, 'yellow', 'white');
 }
 drawing();
