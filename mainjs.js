@@ -3,7 +3,7 @@
         const spreads = {
             single: {
                 name: "单张牌占卜",
-                positions: ["你的现状"]
+                positions: [""]
             }/*,
             three: {
                 name: "三张牌占卜",
@@ -22,8 +22,8 @@
             
             setupEventListeners() {
                 // 牌阵选择按钮
-                document.getElementById('single-spread').addEventListener('click', () => this.showNewButtons());
-                document.getElementById('three-spread').addEventListener('click', () => this.startReading('three'));
+            /*    document.getElementById('single-spread').addEventListener('click', () => this.showNewButtons());
+                document.getElementById('three-spread').addEventListener('click', () => this.startReading('three'));*/
                 document.getElementById('fortune').addEventListener('click', () => this.startSingleReading('财运'));
                 document.getElementById('love').addEventListener('click', () => this.startSingleReading('爱情'));
                 document.getElementById('friendship').addEventListener('click', () => this.startSingleReading('友情'));
@@ -41,13 +41,13 @@
                     }
                 });
             }
-            showNewButtons() {
+            /*showNewButtons() {
                 // 隐藏原有按钮
                 document.getElementById('single-spread').classList.add('hidden');
                 document.getElementById('three-spread').classList.add('hidden');
                 // 显示新按钮
                 document.getElementById('new-buttons').classList.remove('hidden');
-            }
+            }*/
             startSingleReading(category) {
                 this.selectedSpread = 'single';
                 this.currentReading = [];
@@ -112,6 +112,7 @@
                 // 创建牌元素
                 const cardElement = document.createElement('div');
                 cardElement.className = 'deck';
+                cardElement.id = `output`;
                 cardElement.dataset.id = card.id;
                 cardElement.dataset.position = positionIndex;
                 
@@ -127,23 +128,24 @@
                 cardImage.alt = `${card.name}塔罗牌`;
                 cardImage.className = 'card-image';
                 
-                const cardName = document.createElement('div');
-                cardName.className = 'card-name';
-                cardName.textContent = card.name;
+                /*const cardName = document.createElement('div');*/
+
+                /*cardName.className = 'card-name';
+                cardName.textContent = card.name;*/
                 
                 const cardPosition = document.createElement('div');
                 cardPosition.className = 'card-position';
                 cardPosition.textContent = position;
                 
                 cardFront.appendChild(cardImage);
-                cardFront.appendChild(cardName);
+                /*cardFront.appendChild(cardName);*/
                 cardFront.appendChild(cardPosition);
                 
                 const cardBack = document.createElement('div');
                 cardBack.className = 'card-face card-back';
                 
                 cardInner.appendChild(cardFront);
-                cardInner.appendChild(cardBack);
+                /*cardInner.appendChild(cardBack);*/
                 cardElement.appendChild(cardInner);
                 
                 // 添加点击事件显示解释
@@ -193,6 +195,6 @@
         // 初始化游戏
         document.addEventListener('DOMContentLoaded', () => {
             const game = new TarotGame();
-            game.showNewButtons();
+            /*game.showNewButtons();*/
         });
 

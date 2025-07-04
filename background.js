@@ -49,13 +49,18 @@ function drawStar(x, y, outerRadius, innerRadius, numPoints, fillColor, strokeCo
 }
 
 // 监听窗口大小变化事件，更新 Canvas 尺寸
-window.addEventListener('document.documentElement.clientWidth<window.innerWidth', () => {
+window.addEventListener('resize', () => {
     canvas.width = document.documentElement.clientWidth;
     canvas.height = document.documentElement.clientHeight;
     drawing();
 
 });
 function drawing(){
+    const littleStarDiv = document.getElementById('little_star');
+    if (!littleStarDiv) return;
+
+    // 获取 little_star 元素的位置和尺寸信息
+    const rect = littleStarDiv.getBoundingClientRect();
 for(i=0;i<300;i++){var x=Math.random()*window.innerWidth*0.33;
 var y=Math.random()*window.innerHeight;
 // 调用函数绘制星星，可随意设置位置
@@ -64,5 +69,8 @@ for(i=0;i<300;i++){var x=window.innerWidth-Math.random()*window.innerWidth*0.33;
 var y=Math.random()*window.innerHeight;
 // 调用函数绘制星星，可随意设置位置
 drawStar(x, y, 0.1, 2.5, 4, 'white', 'white');}
-drawStar(0.5*window.innerWidth, 0.2*window.innerHeight, 30, 75, 5, 'yellow', 'white');}
+    const centerX = rect.left + 0.5 * rect.width;
+    const centerY = rect.top + 0.5 * rect.height;
+    drawStar(centerX, centerY, 15, rect.height/2, 5, 'yellow', 'white');
+}
 drawing();

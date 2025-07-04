@@ -11,7 +11,7 @@ data = re.sub(r'(\w+):', r'"\1":', data)
 json_data = json.loads(data)
     
 for i in range(len(json_data)):
-    json_data[i]['image']=f'image/{i}.webp'
+    json_data[i]['image']=f'image/{i}.png'
 updated_data = json.dumps(json_data, ensure_ascii=False, indent=4)
 with open(b, 'w', encoding='utf-8') as f:
         f.write(updated_data)   
