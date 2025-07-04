@@ -1,0 +1,252 @@
+ /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0A122A 0%, #2E0249 100%);
+            height: 100vh;
+            width: 100vw;
+            color: #FBFAF8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .hidden{
+            display: none;
+        }
+        #little_star{height: 20vh; width: 100vw;}
+button {height: 50px;
+    width: 80px;
+    z-index: 1;
+background: #6a1572;
+  color: #E6E6FA;
+  border: none;
+  border-radius: 8px;
+  padding: 0 0;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+}
+button img {
+    height: 100%; /* 设置图片高度为按钮高度 */
+    width: 100%; /* 设置图片宽度为按钮宽度 */
+    object-fit: fill;
+}
+button:hover {
+  color: #E6E6FA;
+  box-shadow: 0 0 8px #E6E6FA;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+        
+        /* 牌阵选择区域 */
+        .spread-selector {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* 牌组区域 */
+        .deck-area {
+            margin: 0 0;
+             max-height: 30%;
+             
+        }
+        
+        .deck {
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            position: realtive;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            flex: 1; /* 平均分配宽度 */
+    margin: 10px; /* 可选间距 */
+        }
+        
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .card-front {
+            transform: rotateY(180deg);
+            background-color: #FBFAF8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        
+        .card-back {
+            background: linear-gradient(135deg, #2E0249 0%, #57048a 50%, #2E0249 100%);
+    background-image: url('./image/taluo_new.webp');
+    /* 让背景图片覆盖整个元素 */
+    background-size: cover;
+    /* 背景图片居中显示 */
+    background-position: center;
+    /* 取消原有渐变背景 */
+    background-color: transparent; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        }
+        
+
+        
+        .card-image {
+            max-height: 100%;
+            margin-bottom: 0;
+            object-fit: fill;
+        }
+        .reading-area {
+            width:20%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: auto;
+
+        }
+        #output{
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #F9C80E;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+            
+        }
+        /* 解释模态框 */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #FBFAF8 0%, #e8e4db 100%);
+            color: #2E0249;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal h2 {
+            font-size: 1.8rem;
+            color: #2E0249;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #F9C80E;
+            padding-bottom: 0.5rem;
+        }
+        
+        .modal h3 {
+            font-size: 1.3rem;
+            color: #57048a;
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .modal p {
+            color: #2E0249;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        .close-modal {
+            background: #2E0249;
+            color: #F9C80E;
+            padding: 0.5rem 1rem;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background: #57048a;
+        }
+        
+        /* 响应式布局 */
+        @media (max-width: 768px) {
+        #new-buttons{width: auto;
+        flex: 1; /* 让按钮平均分配剩余空间 */
+        min-width: 0; /* 允许按钮宽度缩小 */}
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .deck {
+                width: 100px;
+                height: 150px;
+            }
+            
+            .reading-area {
+                gap: 1rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+         .hidden {width: auto;
+        flex: 1; /* 让按钮平均分配剩余空间 */
+        min-width: 0; /* 允许按钮宽度缩小 */
+            display: none;   
+        }

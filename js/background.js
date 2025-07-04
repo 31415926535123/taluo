@@ -61,11 +61,11 @@ function drawing(){
 
     // 获取 little_star 元素的位置和尺寸信息
     const rect = littleStarDiv.getBoundingClientRect();
-for(i=0;i<300;i++){var x=Math.random()*window.innerWidth*0.33;
+for(let i=0;i<300;i++){var x=Math.random()*window.innerWidth*0.33;
 var y=Math.random()*window.innerHeight;
 // 调用函数绘制星星，可随意设置位置
 drawStar(x, y, 0.1, 2.5, 4, 'white', 'white');}
-for(i=0;i<300;i++){var x=window.innerWidth-Math.random()*window.innerWidth*0.33;
+for(let i=0;i<300;i++){var x=window.innerWidth-Math.random()*window.innerWidth*0.33;
 var y=Math.random()*window.innerHeight;
 // 调用函数绘制星星，可随意设置位置
 drawStar(x, y, 0.1, 2.5, 4, 'white', 'white');}

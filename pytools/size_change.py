@@ -3,7 +3,7 @@ import os
 
 input_folder = input()
 output_folder = input()
-target_size = (66, 66)  # 目标尺寸
+target_size = (200, 200)  # 目标尺寸
 
 os.makedirs(output_folder, exist_ok=True)
 

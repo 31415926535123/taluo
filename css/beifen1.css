@@ -14,9 +14,6 @@
             padding: 0;
             text-align: center;
         }
-        #single-spread{
-            display: none;
-        }
         .hidden{
             display: none;
         }
@@ -58,7 +55,7 @@ button:active {
         }
         
         /* 牌组区域 */
-        .deck-area {position:realtive;
+        .deck-area {
             margin: 0 0;
              max-height: 30%;
              
@@ -91,7 +88,6 @@ button:active {
         .card.flipped {
             transform: rotateY(180deg);
         }
-        #three-spread{display: none;}
         .card-face {
             position: absolute;
             width: 100%;
@@ -120,7 +116,6 @@ button:active {
     background-position: center;
     /* 取消原有渐变背景 */
     background-color: transparent; 
-    border: linear-gradient(135deg, #0A122A 0%, #2E0249 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,21 +128,6 @@ button:active {
             margin-bottom: 0;
             object-fit: fill;
         }
-        
-        /*.card-name {
-            font-size: 1.2rem;
-            color: #2E0249;
-            font-weight: bold;
-            margin-bottom: 0.2rem;
-        }*/
-        
-        /*.card-position {
-            font-size: 0.9rem;
-            color: #57048a;
-            font-style: italic;
-        }*/
-        
-        /* 占卜结果区域 */
         .reading-area {
             width:20%;
             display: flex;

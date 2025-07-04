@@ -1,0 +1,16 @@
+/* 工具类 */
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #new-buttons {
+        width: auto;
+        flex: 1; /* 让按钮平均分配剩余空间 */
+        min-width: 0; /* 允许按钮宽度缩小 */
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+}

@@ -1,4 +1,4 @@
-const tarotDeck=[
+export const tarotDeck=[
     {
         "id": 0,
         "name": "愚者",
