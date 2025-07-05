@@ -1,40 +1,40 @@
 /* 整体布局 */
 .deck-area {
-    margin: 0 0;
-    max-height: 30%;
+  margin: 0 0;
+  max-height: 30%;
 }
 
 .deck {
-    width: 100%;
-    height: 180px;
-    margin: 0 auto;
-    position: relative;
-    cursor: pointer;
-    perspective: 1000px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 180px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  perspective: 1000px;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .reading-area {
-    width: 20%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: auto;
+  width: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: auto;
 }
 
 #output {
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: #F9C80E;
-    font-weight: bold;
-    margin-bottom: 0.2rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #f9c80e;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
 }
 
 /* 响应式布局 */
