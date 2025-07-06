@@ -1,4 +1,3 @@
-import spreads from "./spreads.js";
 // 游戏类
 export class TarotGame {
   constructor(tarotDeck) {
@@ -25,23 +24,6 @@ export class TarotGame {
     document
       .getElementById("difficulty")
       .addEventListener("click", () => this.startSingleReading("困难"));
-    // 关闭模态框按钮
-    document.getElementById("close-modal").addEventListener("click", () => {
-      document
-        .getElementById("interpretation-modal")
-        .classList.remove("active");
-    });
-
-    // 点击模态框背景关闭
-    document
-      .getElementById("interpretation-modal")
-      .addEventListener("click", (e) => {
-        if (e.target === document.getElementById("interpretation-modal")) {
-          document
-            .getElementById("interpretation-modal")
-            .classList.remove("active");
-        }
-      });
   }
 
   startSingleReading(category) {
@@ -53,7 +35,6 @@ export class TarotGame {
     this.currentReading = [];
 
     // 清空结果区域
-    document.getElementById("reading-area").innerHTML = "";
 
     const car = document.getElementsByClassName("card");
     for (let i = 0; i < car.length; i++) {
@@ -65,64 +46,94 @@ export class TarotGame {
     this.introduction(category);
   }
   introduction(category) {
-    const readingArea = document.getElementById("reading-area");
-    // 清空结果区域
-    readingArea.innerHTML = "";
-    // 显示引导词
     const guideText = document.createElement("p");
     guideText.textContent = `欢迎进行 ${category} 占卜，请点击下面的按钮开始洗牌。`;
-    readingArea.appendChild(guideText);
 
     // 创建开始洗牌按钮
     const shuffleButton = document.createElement("button");
     shuffleButton.textContent = "开始洗牌";
     shuffleButton.id = "shuffle-button";
-    readingArea.appendChild(shuffleButton);
-
-    // 为按钮添加点击事件监听器
+    const jiedu99 = document.getElementById("jiedu99");
+    jiedu99.appendChild(guideText);
+    jiedu99.appendChild(shuffleButton);
     shuffleButton.addEventListener("click", () => {
       startSpinning();
       // 移除按钮和引导词
-      readingArea.removeChild(guideText);
-      readingArea.removeChild(shuffleButton);
+      jiedu99.removeChild(guideText);
+      jiedu99.removeChild(shuffleButton);
     });
   }
 }
 function addSpinAnimationStyle() {
   const style = document.createElement("style");
   style.textContent = `
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-                .spinning {
-                    animation: spin 3s linear infinite;
-                }
-                img {
-                    width: 200px;
-                    height: 200px;
-                }
+  @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      #imageContainer {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        animation: spin 3s linear infinite;
+      }
+
+      .image_xipai {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        transform-origin: center;
+        /* 你可以替换为你自己的图片 */
+        background-image: url("../image/taluo_new.webp");
+        background-size: cover;
+      }
             `;
   document.head.appendChild(style);
 }
 
-function startSpinning(duration = 30000, imageUrl = "../image/yuan.jpeg") {
+function startSpinning(duration = 3000000, imageUrl = "../image/yuan.jpeg") {
   // 动态添加样式
   addSpinAnimationStyle();
   // 创建图片容器
   const imageContainer = document.createElement("div");
+  imageContainer.id = "imageContainer";
   document.body.appendChild(imageContainer);
+  const containerWidth = imageContainer.offsetWidth;
+  const containerHeight = imageContainer.offsetHeight;
+  const centerX = containerWidth / 2;
+  const centerY = containerHeight / 2;
+  const radius = Math.min(containerWidth, containerHeight) * 0.4; // 圆的半径
+  const imageSize = 40; // 图片大小
+  const totalImages = 82; // 图片总数
+  for (let i = 0; i < totalImages; i++) {
+    // 计算每个图片的角度（弧度）
+    const angle = (i / totalImages) * 2 * Math.PI;
 
-  // 动态创建图片元素
-  const image = document.createElement("img");
-  image.src = imageUrl;
-  imageContainer.appendChild(image);
+    // 计算图片的位置
+    const x = centerX + radius * Math.cos(angle) - imageSize / 2;
+    const y = centerY + radius * Math.sin(angle) - imageSize / 2;
 
-  image.classList.add("spinning");
+    // 创建图片元素
+    const img = document.createElement("div");
+    img.className = "image_xipai";
+    img.style.left = `${x}px`;
+    img.style.top = `${y}px`;
 
+    // 旋转图片使其指向圆心
+    const rotationAngle = angle * (180 / Math.PI) + 90;
+    img.style.transform = `rotate(${rotationAngle}deg)`;
+
+    imageContainer.appendChild(img);
+    imageContainer.classList.add("spinning");
+  }
   setTimeout(() => {
-    image.classList.remove("spinning");
-    // 移除图片元素
-    imageContainer.removeChild(image);
+    imageContainer.removeChild(img);
+    imageContainer.classList.remove("spinning");
   }, duration);
 }

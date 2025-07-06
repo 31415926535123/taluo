@@ -3,41 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>塔罗牌环绕</title>
+    <title>塔罗牌围成圆</title>
     <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        background-color: #f0f0f0;
-      }
+      /* 容器样式 */
 
       .circle-container {
-        position: absolute;
-        width: 75px; /* 可根据需要调整容器大小 */
-        height: 75px;
-        /* 设置旋转中心为容器中心 */
-        transform-origin: 10% 10%;
-        /* 添加动画，10s 为旋转一周的时间，可按需调整 */
-        animation: rotateCircle 3s linear infinite;
+        position: relative;
+        width: 800px;
+        height: 800px;
+        /* 水平居中 */
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      @keyframes rotateCircle {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .tarot-card {
+      /* 图片样式 */
+      .circle-container img {
         position: absolute;
-        width: 60px;
-        height: 90px;
-        transform-origin: 0 150px;
+        width: 50px;
+        height: 100px;
+        transform-origin: 50% 100px; /* 以容器中心为旋转原点 */
       }
     </style>
   </head>
@@ -45,17 +29,18 @@
     <div class="circle-container" id="circleContainer"></div>
 
     <script>
+      // 图片数量
+      const numImages = 82;
+      // 获取容器元素
       const container = document.getElementById("circleContainer");
-      const numCards = 82;
-      const angleStep = (2 * Math.PI) / numCards;
-
-      for (let i = 0; i < numCards; i++) {
+      // 循环创建图片元素
+      for (let i = 0; i < 180; i++) {
         const img = document.createElement("img");
         img.src = "../image/taluo_new.webp";
-        img.className = "tarot-card";
-        const angle = i * angleStep;
-        const rotate = `rotate(${angle * (180 / Math.PI)}deg)`;
-        img.style.transform = rotate;
+        img.alt = `塔罗牌 ${i + 1}`;
+        // 计算每张图片的旋转角度
+        const angle = (360 / numImages) * i;
+        img.style.transform = `rotate(${angle}deg)`;
         container.appendChild(img);
       }
     </script>

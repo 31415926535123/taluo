@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>82张图片圆形排列</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        position: relative;
+        width: 600px;
+        height: 600px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+      }
+
+      .image {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        transform-origin: center;
+        /* 你可以替换为你自己的图片 */
+        background-image: url("../image/taluo_new.webp");
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="imageContainer">
+      <!-- 图片将通过JavaScript动态添加 -->
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const container = document.getElementById("imageContainer");
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+        const centerX = containerWidth / 2;
+        const centerY = containerHeight / 2;
+        const radius = Math.min(containerWidth, containerHeight) * 0.4; // 圆的半径
+        const imageSize = 40; // 图片大小
+        const totalImages = 82; // 图片总数
+
+        for (let i = 0; i < totalImages; i++) {
+          // 计算每个图片的角度（弧度）
+          const angle = (i / totalImages) * 2 * Math.PI;
+
+          // 计算图片的位置
+          const x = centerX + radius * Math.cos(angle) - imageSize / 2;
+          const y = centerY + radius * Math.sin(angle) - imageSize / 2;
+
+          // 创建图片元素
+          const img = document.createElement("div");
+          img.className = "image";
+          img.style.left = `${x}px`;
+          img.style.top = `${y}px`;
+
+          // 旋转图片使其指向圆心
+          const rotationAngle = angle * (180 / Math.PI) + 90;
+          img.style.transform = `rotate(${rotationAngle}deg)`;
+
+          container.appendChild(img);
+        }
+      });
+    </script>
+  </body>
+</html>
