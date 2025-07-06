@@ -47,7 +47,9 @@ export class TarotGame {
   }
   introduction(category) {
     const guideText = document.createElement("p");
-    guideText.textContent = `欢迎进行 ${category} 占卜，请点击下面的按钮开始洗牌。`;
+    guideText.id = "guide_text";
+
+    guideText.textContent = `亲爱的朋友，欢迎您选择进行 ${category} 占卜。塔罗牌将为您揭示关于 ${category} 方面的潜在信息与指引。请静下心来，集中注意力，然后点击下面的“开始洗牌”按钮，让塔罗牌开启这场神秘的旅程吧。`;
 
     // 创建开始洗牌按钮
     const shuffleButton = document.createElement("button");

@@ -145,3 +145,46 @@ button:active {
 .close-modal:hover {
   background: #57048a;
 }
+
+/* 按钮样式 */
+#jiedu99 button {
+  /* 设置按钮高度 */
+  height: 50px;
+  /* 设置按钮宽度 */
+  width: 150px;
+  /* 背景颜色 */
+  background-color: #6d4caf;
+  /* 文字颜色 */
+  color: white;
+  /* 无边框 */
+  border: none;
+  /* 圆角 */
+  border-radius: 5px;
+  /* 鼠标悬停样式 */
+  cursor: pointer;
+  /* 过渡效果 */
+  transition: background-color 0.3s ease;
+}
+
+#jiedu99 button:hover {
+  /* 悬停时背景颜色变化 */
+  background-color: #161615;
+}
+
+/* 淡入动画关键帧 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#guide_text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #f2be03;
+  margin-bottom: 20px;
+}
