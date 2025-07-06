@@ -63,7 +63,7 @@ button:active {
 }
 .card-back {
   background: linear-gradient(135deg, #2e0249 0%, #57048a 50%, #2e0249 100%);
-  background-image: url("../image/taluo_new.webp");
+  /*background-image: url("../image/taluo_new.webp");*/
   background-size: cover;
   background-position: center;
   background-color: transparent;
