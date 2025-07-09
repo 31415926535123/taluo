@@ -1,3 +1,4 @@
+import { taluo } from "./taluodata.js";
 export function makeDraggable(element) {
   let isDragging = false;
   let offsetX, offsetY;
@@ -64,7 +65,14 @@ export function makeDraggable(element) {
   }
   element.style.cursor = "grab";*/
 }
-
-// 使用示例
-// const myElement = document.getElementById('my-element');
-// makeDraggable(myElement);
+export function chou_pai() {
+  const a = document.createElement("button");
+  document.body.appendChild(a);
+  a.textContent = "抽牌";
+  a.style.zIndex = 9999;
+  a.style.position = "fixed";
+  a.style.bottom = "10px";
+  a.addEventListener("click", () => {
+    taluo();
+  });
+}

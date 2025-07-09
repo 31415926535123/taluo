@@ -1,4 +1,5 @@
 import { makeDraggable } from "./yuansutool.js";
+import { chou_pai } from "./yuansutool.js";
 // 游戏类
 export class TarotGame {
   constructor(tarotDeck) {
@@ -60,10 +61,10 @@ export class TarotGame {
     jiedu99.appendChild(guideText);
     jiedu99.appendChild(shuffleButton);
     shuffleButton.addEventListener("click", () => {
-      startSpinning();
       // 移除按钮和引导词
       jiedu99.removeChild(guideText);
       jiedu99.removeChild(shuffleButton);
+      startSpinning();
     });
   }
 }
@@ -162,7 +163,7 @@ function createCSS() {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: -11;
     gap:0;
   }
 
@@ -244,4 +245,5 @@ function createTarotCards() {
   container.appendChild(container2);
   container.appendChild(container3);
   document.body.appendChild(container);
+  chou_pai();
 }
