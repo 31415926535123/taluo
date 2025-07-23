@@ -28,16 +28,19 @@ export class TarotGame {
       .addEventListener("click", () => this.startSingleReading("困难"));
   }
 
-  startSingleReading(category) {
+  startSingleReading() {
     const newButtons = document.getElementById("new-buttons");
     if (newButtons) {
       newButtons.classList.add("hidden");
     }
     this.selectedSpread = "single";
     this.currentReading = [];
-
-    // 清空结果区域
-
+    const jiedu99 = document.getElementById("jiedu99");
+    const guideText = document.getElementById("guide_text");
+    const shuffleButton = document.getElementById("shuffle-button");
+    jiedu99.classList.remove("hidden");
+    guideText.classList.remove("hidden");
+    shuffleButton.classList.remove("hidden");
     const car = document.getElementsByClassName("card");
     for (let i = 0; i < car.length; i++) {
       car[i].classList.add("hidden");
@@ -45,25 +48,15 @@ export class TarotGame {
 
     const carra = document.getElementById("deck");
     carra.classList.add("hidden");
-    this.introduction(category);
+    this.introduction();
   }
-  introduction(category) {
-    const guideText = document.createElement("p");
-    guideText.id = "guide_text";
-
-    guideText.textContent = `亲爱的朋友，欢迎您选择进行 ${category} 占卜。塔罗牌将为您揭示关于 ${category} 方面的潜在信息与指引。请静下心来，集中注意力，然后点击下面的“开始洗牌”按钮，让塔罗牌开启这场神秘的旅程吧。`;
-
+  introduction() {
     // 创建开始洗牌按钮
-    const shuffleButton = document.createElement("button");
-    shuffleButton.textContent = "开始洗牌";
-    shuffleButton.id = "shuffle-button";
-    const jiedu99 = document.getElementById("jiedu99");
-    jiedu99.appendChild(guideText);
-    jiedu99.appendChild(shuffleButton);
     shuffleButton.addEventListener("click", () => {
       // 移除按钮和引导词
       jiedu99.removeChild(guideText);
       jiedu99.removeChild(shuffleButton);
+      jiedu99.style.display = "none";
       startSpinning();
     });
   }
@@ -102,7 +95,7 @@ function addSpinAnimationStyle() {
   document.head.appendChild(style);
 }
 
-function startSpinning(duration = 3000000) {
+function startSpinning() {
   // 动态添加样式
   addSpinAnimationStyle();
   // 创建图片容器
@@ -113,8 +106,8 @@ function startSpinning(duration = 3000000) {
   const containerHeight = imageContainer.offsetHeight;
   const centerX = containerWidth / 2;
   const centerY = containerHeight / 2;
-  const radius = Math.min(containerWidth, containerHeight) * 0.4; // 圆的半径
-  const imageSize = 40; // 图片大小
+  const radius = Math.min(containerWidth, containerHeight) * 0.23; // 圆的半径
+  const imageSize = 33; // 图片大小
   const totalImages = 82; // 图片总数
   const images = []; // 用于存储所有图片元素
   for (let i = 0; i < totalImages; i++) {
@@ -148,7 +141,7 @@ function startSpinning(duration = 3000000) {
     imageContainer.classList.remove("spinning");
     document.body.removeChild(imageContainer);
     createTarotCards();
-  }, 30000);
+  }, 3000);
 }
 function createCSS() {
   const style = document.createElement("style");
@@ -163,29 +156,29 @@ function createCSS() {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: -11;
+    z-index: 0;
     gap:0;
   }
 
                 #tarot-container1 {
                     position: absolute;
-                    
+                    z-index: 0;
                     width: 119px; /* 调整为图片宽度 */
                     height: 200px; /* 调整为图片高度 */
                 }
                 #tarot-container2 {
                     position: absolute;
-                    
+                    z-index: 0;
                     width: 119px; /* 调整为图片宽度 */
                     height: 200px; /* 调整为图片高度 */
                 }
                 #tarot-container3 {
                     position: absolute;
-                    
+                    z-index: 0;
                     width: 119px; /* 调整为图片宽度 */
                     height: 200px; /* 调整为图片高度 */
                 }
-                .tarot-card {
+                .tarot-card {z-index: 0;
                     position: absolute;
                     width: 100%;
                     height: 100%;

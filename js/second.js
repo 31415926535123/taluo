@@ -1,0 +1,18 @@
+export default function guide() {
+  const jiedu99Div = document.createElement("div");
+  jiedu99Div.id = "jiedu99";
+  document.body.appendChild(jiedu99Div);
+  const guideText = document.createElement("p");
+  guideText.id = "guide_text";
+  guideText.textContent = `亲爱的朋友，欢迎您选择进行  占卜。塔罗牌将为您揭示关于方面的潜在信息与指引。请静下心来，集中注意力，然后点击下面的“开始洗牌”按钮，让塔罗牌开启这场神秘的旅程吧。`;
+  const shuffleButton = document.createElement("button");
+  shuffleButton.textContent = "开始洗牌";
+  shuffleButton.id = "shuffle-button";
+  const jiedu99 = document.getElementById("jiedu99");
+  document.body.appendChild(jiedu99);
+  jiedu99.appendChild(guideText);
+  jiedu99.appendChild(shuffleButton);
+  jiedu99.classList = "hidden";
+  guideText.classList = "hidden";
+  shuffleButton.classList = "hidden";
+}

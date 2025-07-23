@@ -1,9 +1,9 @@
 // 获取 Canvas 元素
-const canvas = document.createElement('canvas');
+const canvas = document.createElement("canvas");
 // 设置 Canvas 为绝对定位
-canvas.style.position = 'fixed';
-canvas.style.top = '0';
-canvas.style.left = '0';
+canvas.style.position = "fixed";
+canvas.style.top = "0";
+canvas.style.left = "0";
 canvas.style.zIndex = -1;
 // 初始设置 Canvas 尺寸为视口尺寸
 canvas.width = window.innerWidth;
@@ -11,7 +11,7 @@ canvas.height = window.innerHeight;
 document.body.appendChild(canvas);
 
 // 获取 2D 绘图上下文
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext("2d");
 
 /**
  * 绘制星星的函数
@@ -23,54 +23,73 @@ const ctx = canvas.getContext('2d');
  * @param {string} fillColor - 星星的填充颜色
  * @param {string} strokeColor - 星星的描边颜色
  */
-function drawStar(x, y, outerRadius, innerRadius, numPoints, fillColor, strokeColor) {
-    ctx.beginPath();
-    // 计算每个角的弧度
-    const angle = (2 * Math.PI) / (numPoints * 2);
-    for (let i = 0; i < numPoints * 2; i++) {
-        // 根据当前角的索引判断是外顶点还是内顶点
-        const radius = i % 2 === 0 ? outerRadius : innerRadius;
-        const currentAngle = i * angle;
-        const pointX = x + radius * Math.cos(currentAngle - Math.PI / 2);
-        const pointY = y + radius * Math.sin(currentAngle - Math.PI / 2);
-        if (i === 0) {
-            ctx.moveTo(pointX, pointY);
-        } else {
-            ctx.lineTo(pointX, pointY);
-        }
+function drawStar(
+  x,
+  y,
+  outerRadius,
+  innerRadius,
+  numPoints,
+  fillColor,
+  strokeColor
+) {
+  ctx.beginPath();
+  // 计算每个角的弧度
+  const angle = (2 * Math.PI) / (numPoints * 2);
+  for (let i = 0; i < numPoints * 2; i++) {
+    // 根据当前角的索引判断是外顶点还是内顶点
+    const radius = i % 2 === 0 ? outerRadius : innerRadius;
+    const currentAngle = i * angle;
+    const pointX = x + radius * Math.cos(currentAngle - Math.PI / 2);
+    const pointY = y + radius * Math.sin(currentAngle - Math.PI / 2);
+    if (i === 0) {
+      ctx.moveTo(pointX, pointY);
+    } else {
+      ctx.lineTo(pointX, pointY);
     }
-    ctx.closePath();
-    // 设置填充颜色并填充星星
-    ctx.fillStyle = fillColor;
-    ctx.fill();
-    // 设置描边颜色并描边星星
-    ctx.strokeStyle = strokeColor;
-    ctx.stroke();
+  }
+  ctx.closePath();
+  // 设置填充颜色并填充星星
+  ctx.fillStyle = fillColor;
+  ctx.fill();
+  // 设置描边颜色并描边星星
+  ctx.strokeStyle = strokeColor;
+  ctx.stroke();
 }
 
 // 监听窗口大小变化事件，更新 Canvas 尺寸
-window.addEventListener('resize', () => {
-    canvas.width = document.documentElement.clientWidth;
-    canvas.height = document.documentElement.clientHeight;
-    drawing();
-
+window.addEventListener("resize", () => {
+  canvas.width = document.documentElement.clientWidth;
+  canvas.height = document.documentElement.clientHeight;
+  drawing();
 });
-function drawing(){
-    const littleStarDiv = document.getElementById('little_star');
-    if (!littleStarDiv) return;
+function drawing() {
+  const littleStarDiv = document.getElementById("little_star");
+  if (!littleStarDiv) return;
 
-    // 获取 little_star 元素的位置和尺寸信息
-    const rect = littleStarDiv.getBoundingClientRect();
-for(let i=0;i<300;i++){var x=Math.random()*window.innerWidth*0.33;
-var y=Math.random()*window.innerHeight;
-// 调用函数绘制星星，可随意设置位置
-drawStar(x, y, 0.1, 2.5, 4, 'white', 'white');}
-for(let i=0;i<300;i++){var x=window.innerWidth-Math.random()*window.innerWidth*0.33;
-var y=Math.random()*window.innerHeight;
-// 调用函数绘制星星，可随意设置位置
-drawStar(x, y, 0.1, 2.5, 4, 'white', 'white');}
-    const centerX = rect.left + 0.5 * rect.width;
-    const centerY = rect.top + 0.5 * rect.height;
-    drawStar(centerX, centerY, rect.height/6, rect.height/2, 5, 'yellow', 'white');
+  // 获取 little_star 元素的位置和尺寸信息
+  const rect = littleStarDiv.getBoundingClientRect();
+  for (let i = 0; i < 300; i++) {
+    var x = Math.random() * window.innerWidth * 0.33;
+    var y = Math.random() * window.innerHeight;
+    // 调用函数绘制星星，可随意设置位置
+    drawStar(x, y, 0.1, 2.5, 4, "white", "white");
+  }
+  for (let i = 0; i < 300; i++) {
+    var x = window.innerWidth - Math.random() * window.innerWidth * 0.33;
+    var y = Math.random() * window.innerHeight;
+    // 调用函数绘制星星，可随意设置位置
+    drawStar(x, y, 0.1, 2.5, 4, "white", "white");
+  }
+  const centerX = rect.left + 0.5 * rect.width;
+  const centerY = rect.top + 0.5 * rect.height;
+  drawStar(
+    centerX,
+    centerY,
+    rect.height / 9,
+    rect.height / 3,
+    5,
+    "yellow",
+    "white"
+  );
 }
 drawing();

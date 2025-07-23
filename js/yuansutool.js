@@ -60,10 +60,10 @@ export function makeDraggable(element) {
   document.addEventListener("touchend", handleTouchEnd);
 
   // 确保元素为绝对定位
-  /* if (getComputedStyle(element).position === "static") {
+  if (getComputedStyle(element).position === "static") {
     element.style.position = "absolute";
   }
-  element.style.cursor = "grab";*/
+  element.style.cursor = "grab";
 }
 export function chou_pai() {
   const a = document.createElement("button");
